@@ -10,51 +10,47 @@ public class BoardManagerController : MonoBehaviour
 
     public GameObject tilePrefab;
 
-    private float vertical;
-    private float horizontal;
     private float prefabWidth;
     private float prefabHeight;
-    private int columnsCount;
-    private int rowsCount;
-    private int itemMargin = 1;
+
+    public int columnsCount;
+    public int rowsCount;
+    public float itemMargin;
+    public float startXOffset;
+    public float startYOffset;
 
     public GameObject[] tilesPull;
     private GameObject[,] gameTiles;
 
     void Start()
     {
-        vertical = Camera.main.orthographicSize;
-        horizontal = vertical * (Screen.width / Screen.height);
         prefabWidth = tilePrefab.GetComponent<Renderer>().bounds.size.x;
         prefabHeight = tilePrefab.GetComponent<Renderer>().bounds.size.y;
-        columnsCount = (int)(horizontal / prefabWidth);
-        rowsCount = (int)(vertical / prefabHeight);
 
         gameTiles = new GameObject[columnsCount, rowsCount];
 
-        Debug.Log("width " + columnsCount);
-        Debug.Log("height " + rowsCount);
-
-        populateTiles();
-        Debug.Log("tiles size" + gameTiles.Length);
+        PopulateTiles();
     }
 
-    void populateTiles() {
-        float startX = transform.position.x;
-        float startY = transform.position.y;
+    void PopulateTiles() {
+        float startX = transform.position.x + startXOffset;
+        float startY = transform.position.y + startYOffset;
 
-        for (int x = 0; x < rowsCount; x++)
+        for (int x = 0; x < columnsCount; x++)
         {      
-            for (int y = 0; y < columnsCount; y++)
+            for (int y = 0; y < rowsCount; y++)
             {
-                Debug.Log("position x " + (startX + (prefabWidth * x)) + " position y " + (startY + (prefabHeight * y)));
+                float currentXPos = startX + itemMargin * x;
+                float currentYPos = startY + itemMargin * y;
 
                 GameObject newTile = tilesPull[x + y];
-                newTile.transform.position = new Vector3(startX + (prefabWidth * x), startY + (prefabHeight * y), 0);
+                newTile.transform.position = new Vector3(currentXPos + (prefabWidth * x), currentYPos + (prefabHeight * y), 0);
                 gameTiles[x, y] = newTile;
             }
         }
 
     }
+
+  
 
 }

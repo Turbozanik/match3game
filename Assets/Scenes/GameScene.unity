@@ -1410,7 +1410,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.05, z: -10}
+  m_LocalPosition: {x: 0, y: 2.3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2698,6 +2698,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tilePrefab: {fileID: 1228532621688260474, guid: b72b272080a1b0842be3b2ad24319c79,
     type: 3}
+  columnsCount: 7
+  rowsCount: 7
+  itemMargin: 0.25
+  startXOffset: 0.25
+  startYOffset: -0.25
   tilesPull:
   - {fileID: 719723411}
   - {fileID: 681101073}
@@ -2738,7 +2743,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1715886497}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2948,7 +2953,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973898019}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.39, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1942559418}
