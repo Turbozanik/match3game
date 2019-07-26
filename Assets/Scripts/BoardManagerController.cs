@@ -30,20 +30,27 @@ public class BoardManagerController : MonoBehaviour
         columnsCount = (int)(horizontal / prefabWidth);
         rowsCount = (int)(vertical / prefabHeight);
 
+        gameTiles = new GameObject[columnsCount, rowsCount];
+
+        Debug.Log("width " + columnsCount);
+        Debug.Log("height " + rowsCount);
+
         populateTiles();
+        Debug.Log("tiles size" + gameTiles.Length);
     }
 
     void populateTiles() {
         float startX = transform.position.x;
         float startY = transform.position.y;
 
-        Debug.Log(startX + " " + startY);
-
         for (int x = 0; x < rowsCount; x++)
         {      
             for (int y = 0; y < columnsCount; y++)
             {
-                GameObject newTile = Instantiate(tilePrefab, new Vector3(startX + (prefabWidth * x), startY + (prefabHeight * y), 0), tilePrefab.transform.rotation);
+                Debug.Log("position x " + (startX + (prefabWidth * x)) + " position y " + (startY + (prefabHeight * y)));
+
+                GameObject newTile = tilesPull[x + y];
+                newTile.transform.position = new Vector3(startX + (prefabWidth * x), startY + (prefabHeight * y), 0);
                 gameTiles[x, y] = newTile;
             }
         }
