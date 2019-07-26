@@ -33,6 +33,7 @@ public class BoardManagerController : MonoBehaviour
     }
 
     void PopulateTiles() {
+        int currentPullIdex = 0;
         float startX = transform.position.x + startXOffset;
         float startY = transform.position.y + startYOffset;
 
@@ -43,11 +44,14 @@ public class BoardManagerController : MonoBehaviour
                 float currentXPos = startX + itemMargin * x;
                 float currentYPos = startY + itemMargin * y;
 
-                GameObject newTile = Instantiate(tilesPull[x + y], new Vector3(currentXPos + (prefabWidth * x), currentYPos + (prefabHeight * y), 0), tilesPull[x + y].transform.rotation);//tilesPull[x + y];
-                //newTile.transform.position = new Vector3(currentXPos + (prefabWidth * x), currentYPos + (prefabHeight * y), 0);
-                newTile.GetComponent<Renderer>().material.SetColor("_Color", Color.black);
+                GameObject newTile = tilesPull[currentPullIdex];//Instantiate(tilesPull[x + y], new Vector3(currentXPos + (prefabWidth * x), currentYPos + (prefabHeight * y), 0), tilesPull[x + y].transform.rotation);
+                newTile.transform.position = new Vector3(currentXPos + (prefabWidth * x), currentYPos + (prefabHeight * y), 0);
                 gameTiles[x, y] = newTile;
-                Debug.Log(newTile.name + " " + newTile.GetComponent<Renderer>().material.GetColor("_Color"));
+
+                currentPullIdex++;
+
+                Debug.Log(x + y);
+
             }
         }
 
