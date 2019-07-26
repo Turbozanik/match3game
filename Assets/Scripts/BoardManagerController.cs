@@ -43,9 +43,11 @@ public class BoardManagerController : MonoBehaviour
                 float currentXPos = startX + itemMargin * x;
                 float currentYPos = startY + itemMargin * y;
 
-                GameObject newTile = tilesPull[x + y];
-                newTile.transform.position = new Vector3(currentXPos + (prefabWidth * x), currentYPos + (prefabHeight * y), 0);
+                GameObject newTile = Instantiate(tilesPull[x + y], new Vector3(currentXPos + (prefabWidth * x), currentYPos + (prefabHeight * y), 0), tilesPull[x + y].transform.rotation);//tilesPull[x + y];
+                //newTile.transform.position = new Vector3(currentXPos + (prefabWidth * x), currentYPos + (prefabHeight * y), 0);
+                newTile.GetComponent<Renderer>().material.SetColor("_Color", Color.black);
                 gameTiles[x, y] = newTile;
+                Debug.Log(newTile.name + " " + newTile.GetComponent<Renderer>().material.GetColor("_Color"));
             }
         }
 
